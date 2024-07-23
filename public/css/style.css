@@ -1,0 +1,7 @@
+.gambar1 {
+    z-index: 1; /* Menentukan urutan lapisan gambar 1 */
+}
+
+.gambar2 {
+    z-index: 2; /* Menentukan urutan lapisan gambar 2 */
+}
