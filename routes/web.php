@@ -40,6 +40,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+    Route::get('/admin/laporan_narasumber', [AdminController::class,'index'])->name('admin.laporan_narasumber');
 });
 
 Route::middleware('auth')->group(function () {
