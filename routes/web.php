@@ -40,7 +40,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
-    Route::get('/admin/laporan_narasumber', [AdminController::class,'index'])->name('admin.laporan_narasumber');
+    Route::get('/admin/laporan_narasumber', [AdminController::class,'laporan_narasumber'])->name('admin.laporan_narasumber');
 });
 
 Route::middleware('auth')->group(function () {
@@ -56,6 +56,7 @@ Route::get('/permohonan/pengajuan_skhpn', [PengajuanSKHPN::class,'index'])->name
 //permohonan narasumber
 Route::get('/permohonan/permohonan_narasumber', [PermohonanNarasumberController::class,'index'])->name('permohonan_narasumber.index');
 Route::post('/permohonan-narasumber', [PermohonanNarasumberController::class,'store'])->name('submit.request');
+Route::get('/permohonan-narasumber/{id}',[PermohonanNarasumberController::class,'show'])->name('permohonan.show');
 
 
 //admin

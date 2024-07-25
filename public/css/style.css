@@ -5,3 +5,15 @@
 .gambar2 {
     z-index: 2; /* Menentukan urutan lapisan gambar 2 */
 }
+@media print {
+    /* Contoh gaya cetak */
+    body {
+        font-size: 12pt;
+    }
+    .no-print {
+        display: none;
+    }
+    .printable-area {
+        width: 100%;
+    }
+}

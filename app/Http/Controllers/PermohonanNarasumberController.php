@@ -40,4 +40,9 @@ class PermohonanNarasumberController extends Controller
     public function index(){
         return view('permohonan.permohonan_narasumber');
     }
+
+    public function show($id){
+        $permohonan = PermohonanNarasumber::findOrFail($id);
+        return view('permohonan.show_permohonan_narasumber', compact('permohonan'));
+    }
 }

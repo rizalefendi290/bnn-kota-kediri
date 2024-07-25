@@ -20,6 +20,23 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+    @media print {
+
+        /* Contoh gaya cetak */
+        body {
+            font-size: 12pt;
+        }
+
+        .no-print {
+            display: none;
+        }
+
+        .printable-area {
+            width: 100%;
+        }
+    }
+    </style>
 </head>
 
 <body id="app" class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
@@ -46,7 +63,8 @@
                     class="flex flex-col md:flex-row md:space-x-6 rtl:space-x-reverse mt-4 md:mt-0 md:text-sm md:font-medium">
                     @if(auth()->user() && auth()->user()->isAdmin())
                     <li class="nav-item list-none">
-                        <a href="{{route('admin_dashboard')}}" class="nav-link text-gray-700 dark:text-white hover:text-blue-500">Admin
+                        <a href="{{route('admin_dashboard')}}"
+                            class="nav-link text-gray-700 dark:text-white hover:text-blue-500">Admin
                             Dashboard</a>
                     </li>
                     @endif
@@ -104,6 +122,17 @@
 
     <!-- Flowbite -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const printButton = document.getElementById('printButton');
+
+        // Tambahkan console.log untuk memastikan event listener bekerja
+        printButton.addEventListener('click', function() {
+            console.log('Print button clicked');
+            window.print();
+        });
+    });
+    </script>
 </body>
 
 </html>

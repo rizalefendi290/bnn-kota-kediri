@@ -12,7 +12,8 @@ class AdminController extends Controller
     }
 
     public function laporan_narasumber(){
-        $laporan_narasumber = PermohonanNarasumber::all();
-        return view('admin.laporan_narasumber', compact('laporan_narasumber'));
+        $laporan_narasumbers = PermohonanNarasumber::all();
+        return view('admin.laporan_narasumber', compact('laporan_narasumbers'));
     }
+    
 }
