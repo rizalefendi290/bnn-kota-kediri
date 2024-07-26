@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('participants');
             $table->string('request_letter');
             $table->text('remarks')->nullable();
+            $table->string('status')->default('unprocessed');
             $table->timestamps();
         });
     }

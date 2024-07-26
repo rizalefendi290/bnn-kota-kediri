@@ -57,8 +57,9 @@ Route::get('/permohonan/pengajuan_skhpn', [PengajuanSKHPN::class,'index'])->name
 Route::get('/permohonan/permohonan_narasumber', [PermohonanNarasumberController::class,'index'])->name('permohonan_narasumber.index');
 Route::post('/permohonan-narasumber', [PermohonanNarasumberController::class,'store'])->name('submit.request');
 Route::get('/permohonan-narasumber/{id}',[PermohonanNarasumberController::class,'show'])->name('permohonan.show');
-
-
+Route::delete('/permohonan-narasumber/{id}', [PermohonanNarasumberController::class, 'destroy'])->name('permohonan.destroy');
+Route::get('/permohonan', [AdminController::class,'laporan_narasumber'])->name('admin.laporan_narasumber');
+Route::patch('permohonan-narasumber/{id}/updateStatus',[AdminController::class,'updateStatus'])->name('admin.laporan_narasumber.updateStatus');
 //admin
 Route::get('/admin-dashboard', [AdminController::class, 'index'])->name('admin_dashboard');
 

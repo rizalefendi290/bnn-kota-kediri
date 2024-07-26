@@ -98,7 +98,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="YOUR_GOOGLE_FORM_LINK"
+                                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdPqg7RNtkkYTxwNE10vnDQtOV8iRm9COZNDz7s4NakpBswpQ/viewform?usp=pp_url"
                                             class="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500">
                                             <div class="block">
                                                 <div class="w-full text-lg font-semibold">Google Form</div>

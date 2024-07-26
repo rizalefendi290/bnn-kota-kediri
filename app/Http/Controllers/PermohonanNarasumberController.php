@@ -24,7 +24,7 @@ class PermohonanNarasumberController extends Controller
 
         $requestLetterPath = $request->file('request_letter')->store('request_letters', 'public');
 
-        PermohonanNarasumber::create([
+        $permohonan = PermohonanNarasumber::create([
             'name' => $request->name,
             'phone' => $request->phone,
             'event_place' => $request->event_place,
@@ -35,7 +35,7 @@ class PermohonanNarasumberController extends Controller
             'request_letter' => $requestLetterPath,
             'remarks' => $request->remarks,
         ]);
-        return redirect()->back()->with('success', 'Permohonan berhasil dikirim!');
+        return redirect()->route('permohonan.show', $permohonan->id)->with('success', 'Permohonan berhasil dikirim!');
     }
     public function index(){
         return view('permohonan.permohonan_narasumber');
@@ -45,4 +45,18 @@ class PermohonanNarasumberController extends Controller
         $permohonan = PermohonanNarasumber::findOrFail($id);
         return view('permohonan.show_permohonan_narasumber', compact('permohonan'));
     }
+
+    public function destroy($id){
+        $permohonan = PermohonanNarasumber::findOrFail($id);
+
+        if ($permohonan->request_letter && Storage::exists($permohonan->request_letter)) {
+            Storage::delete($permohonan->request_letter);
+        }
+
+        $permohonan->delete();
+
+        return redirect()->route('admin.laporan_narasumber')->with('success', 'Data Berhasil di hapus');
+    }
+
+    
 }
