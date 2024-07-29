@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PengaduanController;
@@ -46,6 +47,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
+
+//history
+Route::get('/history/permohonan_narasumber', [UserController::class,'history_permohonan_narasumber'])->name('history_permohonan_narasumber');
 
 Route::get('/pengaduan', [PengaduanController::class, 'index'])->name('pengaduan.index');
 Route::get('/pengaduan/form', [PengaduanController::class, 'form'])->name('pengaduan.form');
