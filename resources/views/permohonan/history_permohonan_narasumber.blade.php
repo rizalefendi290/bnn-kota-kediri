@@ -35,11 +35,11 @@
                     <td class="py-2 px-4 border-b">{{ $request->participants }}</td>
                     <td class="py-2 px-4 border-b">
                         <a href="{{ Storage::url($request->request_letter) }}" target="_blank"
-                            class="text-blue-500 hover:underline">Lihat Berkas</a>
+                            class="text-blue-600 hover:underline hover:text-blue-400">Lihat Berkas</a>
                     </td>
                     <td class="py-2 px-4 border-b">{{ $request->remarks }}</td>
                     <td class="py-2 px-4 border-b">{{ $request->status == 'processed' ? 'Sudah Diproses' : 'Belum Diproses' }}</td>
-                    <td class="py-2 px-4 border-b"><a href="{{route('permohonan.show', $request->id)}}">Cetak</a></td>
+                    <td class="py-2 px-4 border-b"><a class="text-blue-600 hover:text-blue-400 hover:underline" href="{{route('permohonan.show', $request->id)}}">Cetak</a></td>
                 </tr>
                 @endforeach
             </tbody>

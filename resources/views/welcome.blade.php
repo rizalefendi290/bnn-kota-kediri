@@ -17,6 +17,7 @@
 </div>
 
 <div class="container mx-auto mt-10 px-4 mb-20">
+    <h1 class="text-center text-2xl font-bold my-10">Layanan Kami</h1>
     <div class="flex flex-wrap justify-center gap-6">
         <!-- Pengaduan masyarakat -->
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -42,8 +43,8 @@
         </div>
         <!-- permohonan narasumber -->
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <img class="rounded-t-lg w-full object-cover h-48" src="{{asset('images/thumbnail/kantor_dalam.jpg')}}"
-                    alt="kantor dalam">
+            <img class="rounded-t-lg w-full object-cover h-48" src="{{asset('images/thumbnail/kantor_dalam.jpg')}}"
+                alt="kantor dalam">
             <div class="p-5">
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Layanan Permohonan
                     Narasumber</h5>
@@ -144,6 +145,89 @@
                 </a>
             </div>
         </div>
+
+
+        <div id="controls-carousel" class="relative w-full mt-10" data-carousel="static">
+            <!-- Carousel wrapper -->
+            <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                <!-- Item 1 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="{{asset('images/thumbnail/thumbnail1.webp')}}"
+                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                </div>
+                <!-- Item 2 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+                    <img src="{{asset('images/thumbnail/thumbnail2.jpg')}}"
+                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                </div>
+            </div>
+            <!-- Slider controls -->
+            <button type="button"
+                class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                data-carousel-prev>
+                <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 1 1 5l4 4" />
+                    </svg>
+                    <span class="sr-only">Previous</span>
+                </span>
+            </button>
+            <button type="button"
+                class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                data-carousel-next>
+                <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 9 4-4-4-4" />
+                    </svg>
+                    <span class="sr-only">Next</span>
+                </span>
+            </button>
+        </div>
+
+        <h1 class="text-center text-2xl font-bold my-10">Tautan Terkait</h1>
+        <div class="mx-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-transparent rounded-lg overflow-hidden text-center">
+                <img src="{{asset('images/thumbnail/logo_bnn.png')}}" class="w-full h-36 object-fill" alt="...">
+                <div class="p-4 md:p-6">
+                    <a href="https://bnn.go.id/"
+                        class="text-blue-600 dark:text-blue-500 hover:underline font-medium md:text-lg inline-flex items-center ">BNN
+                        RI</a>
+                </div>
+            </div>
+            <div class="bg-transparent rounded-lg overflow-hidden text-center">
+                <img src="{{asset('images/thumbnail/cegah.jpg')}}" class="w-full h-36 object-fill" alt="...">
+                <div class="p-4 md:p-6">
+                    <a href="https://cegahnarkoba.bnn.go.id/"
+                        class="text-blue-600 dark:text-blue-500 hover:underline font-medium text-base md:text-lg inline-flex items-center">Cegah
+                        Narkoba</a>
+                </div>
+            </div>
+            <div class="bg-transparent rounded-lg overflow-hidden text-center">
+                <img src="{{asset('images/thumbnail/stop-narkoba.jpg')}}" class="w-full h-36 object-fill" alt="...">
+                <div class="p-4 md:p-6">
+                    <a href="https://tokostopnarkoba.bnn.go.id/"
+                        class="text-blue-600 dark:text-blue-500 hover:underline font-medium text-base md:text-lg inline-flex items-center">Toko
+                        Stop Narkoba</a>
+                </div>
+            </div>
+            <div class="bg-transparent rounded-lg overflow-hidden text-center">
+                <img src="{{asset('images/thumbnail/logo_bnn.png')}}" class="w-full h-36 object-fill" alt="...">
+                <div class="p-4 md:p-6">
+                    <a href="https://jatim.bnn.go.id/"
+                        class="text-blue-600 dark:text-blue-500 hover:underline font-medium text-base md:text-lg inline-flex items-center">BNN
+                        Jawa Timur</a>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
 </div>
 @endsection

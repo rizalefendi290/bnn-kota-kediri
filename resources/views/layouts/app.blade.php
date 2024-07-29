@@ -51,14 +51,11 @@
 <body id="app" class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
     <nav class="bg-white dark:bg-gray-800 shadow-md">
         <div class="max-w-screen-xl mx-auto p-4 flex flex-wrap items-center justify-between">
-            <!-- Logo and Brand Name -->
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('images/thumbnail/logo_bnn.png') }}" class="h-10" alt="BNN Logo" />
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BNN Kota
                     Kediri</span>
             </a>
-
-            <!-- Mobile Menu Button -->
             <button type="button"
                 class="inline-flex items-center p-2 text-gray-500 rounded-lg md:hidden hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-600"
                 aria-controls="navbar-default" aria-expanded="false" data-collapse-toggle="navbar-default">
@@ -72,17 +69,9 @@
             </button>
 
             <!-- Navbar Links -->
-            <div class="hidden w-full md:flex md:items-center md:w-auto" id="navbar-default">
+            <div class="hidden w-full md:flex md:items-center md:justify-center md:w-auto" id="navbar-default">
                 <ul
                     class="flex flex-col md:flex-row md:space-x-6 rtl:space-x-reverse mt-4 md:mt-0 md:text-sm md:font-medium">
-                    <!-- Admin Dashboard Link -->
-                    @if(auth()->user() && auth()->user()->isAdmin())
-                    <li class="nav-item list-none">
-                        <a href="{{ route('admin_dashboard') }}"
-                            class="nav-link text-gray-700 dark:text-white hover:text-blue-500">Admin Dashboard</a>
-                    </li>
-                    @endif
-
                     <!-- Authentication Links -->
                     @guest
                     @if (Route::has('login'))
@@ -98,23 +87,13 @@
                     </li>
                     @endif
                     @else
-                    <!-- Logout Link -->
                     <li class="nav-item list-none">
-                        <a href="{{ route('logout') }}"
-                            class="nav-link text-red-600 dark:text-red-400 hover:text-red-800"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                            @csrf
-                        </form>
+                        <a class="nav-link text-gray-700 dark:text-white hover:text-blue-500" href="/">Beranda</a>
                     </li>
-
                     <!-- History Dropdown -->
-                    <li class="nav-item list-none">
-                        <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover"
-                            data-dropdown-trigger="hover"
-                            class="text-white bg-blue-700 hover:text-blue-600 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5  text-center inline-flex items-center dark:bg-transparent"
+                    <li class="nav-item list-none relative">
+                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+                            class="text-white bg-blue-700 hover:text-blue-600 focus:outline-none font-medium rounded-lg text-sm px-0 text-center inline-flex items-center dark:bg-transparent"
                             type="button">
                             History
                             <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -125,37 +104,79 @@
                         </button>
 
                         <!-- Dropdown Menu -->
-                        <div id="dropdownHover"
+                        <div id="dropdown"
                             class="dropdown-menu z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                aria-labelledby="dropdownHoverButton">
+                                aria-labelledby="dropdownDefaultButton">
                                 <li>
                                     <a href="{{ route('history_permohonan_narasumber') }}"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">History
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Riwayat
                                         Permohonan Narasumber</a>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Riwayat
+                                        Laporan Pengaduan</a>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Riwayat
+                                        Pengajuan SKHPN</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
 
-                    <!-- Profile Link -->
-                    <li class="nav-item list-none">
-                        <a class="nav-link text-gray-700 dark:text-white hover:text-blue-500"
-                            href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
+                    <li class="nav-item list-none relative">
+                        <button id="dropdownDefaultButton2" data-dropdown-toggle="dropdown2"
+                            class="text-white bg-blue-700 hover:text-blue-600 focus:outline-none font-medium rounded-lg text-sm px-0 text-center inline-flex items-center dark:bg-transparent"
+                            type="button">
+                            {{auth()->user()->name}}
+                            <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div id="dropdown2"
+                            class="dropdown-menu2 z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownDefaultButton2">
+                                @if(auth()->user() && auth()->user()->isAdmin())
+                                <li class="nav-item list-none">
+                                    <a href="{{ route('admin_dashboard') }}"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Admin
+                                        Dashboard</a>
+                                </li>
+                                <li>
+                                    @endif
+                                </li>
+                                <li>
+                                    <a href="{{ route('profile.edit') }}"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit
+                                        Profile</a>
+                                </li>
+                                <li class="">
+                                    <a href="{{ route('logout') }}"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-red-300 text-red-600 dark:text-red-400"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     @endguest
                 </ul>
             </div>
         </div>
     </nav>
+
 
 
     <main class="py-6">
