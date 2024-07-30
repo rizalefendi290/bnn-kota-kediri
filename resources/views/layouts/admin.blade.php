@@ -64,24 +64,6 @@
         </div>
     </main>
 
-    <footer
-        class="w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
-        <div class="text-center md:text-left md:w-auto">
-            <span class="text-sm text-gray-500 dark:text-gray-400">© 2024
-                <a href="#" class="hover:underline">Pelayanan dan Pengaduan BNN Kota Kediri</a>. All Rights
-                Reserved.
-            </span>
-        </div>
-        <ul
-            class="flex flex-wrap items-center justify-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 md:mt-0 md:flex md:justify-end">
-            <li class="me-4 md:me-6">
-                <a href="https://kedirikota.bnn.go.id/" class="hover:underline">Kunjungi web resmi kami</a>
-            </li>
-            <li>
-                <a href="https://kedirikota.bnn.go.id/kontak/" class="hover:underline">Contact</a>
-            </li>
-        </ul>
-    </footer>
 
     <!-- Flowbite -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>

@@ -10,6 +10,6 @@ class PermohonanNarasumber extends Model
     use HasFactory;
     protected $table = 'permohonan_narasumbers';
     protected $fillable = [
-        'name', 'phone', 'event_place', 'event_start_time', 'event_end_time', 'event_date', 'participants', 'request_letter', 'remarks'
+        'name', 'phone', 'event_place', 'event_start_time', 'event_end_time', 'event_date', 'participants', 'request_letter', 'remarks', 'status'
     ];
 }
