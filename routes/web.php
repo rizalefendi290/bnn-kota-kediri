@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminPengaduanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -40,17 +41,26 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
-    Route::get('/admin/laporan_narasumber', [AdminController::class,'index'])->name('admin.laporan_narasumber');
+    Route::get('/admin/pengaduan', [AdminController::class, 'pengaduan'])->name('admin.pengaduan.index');
+    Route::get('/admin/laporan_narasumber', [AdminController::class,'laporan_narasumber'])->name('admin.laporan_narasumber');
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 
+//route pengaduan
 Route::get('/pengaduan', [PengaduanController::class, 'index'])->name('pengaduan.index');
-Route::get('/pengaduan/form', [PengaduanController::class, 'form'])->name('pengaduan.form');
-Route::get('/permohonan', [PermohonanController::class, 'index'])->name('permohonan.index');
+Route::get('/pengaduan', [PengaduanController::class, 'create'])->name('pengaduan.create');
+Route::post('/pengaduan/create', [PengaduanController::class, 'store'])->name('pengaduan.form');
 
+//route admin pengaduan
+Route::get('/admin/pengaduan', [AdminPengaduanController::class, 'index'])->name('admin.pengaduan.index');
+Route::get('/admin/pengaduan/{id}', [AdminPengaduanController::class, 'show'])->name('admin.pengaduan.show');
+Route::delete('/admin/pengaduan/{id}', [AdminPengaduanController::class, 'destroy'])->name('admin.pengaduan.destroy');
+
+//permohonan skhpn
+Route::get('/permohonan', [PermohonanController::class, 'index'])->name('permohonan.index');
 Route::get('/permohonan/pengajuan_skhpn', [PengajuanSKHPN::class,'index'])->name('pengajuan_skhpn.index');
 
 //permohonan narasumber
