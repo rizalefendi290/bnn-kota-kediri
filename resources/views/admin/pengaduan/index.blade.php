@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-center text-4xl py-10 font-black text-gray-900 dark:text-white">Pengaduan Management</h1>
