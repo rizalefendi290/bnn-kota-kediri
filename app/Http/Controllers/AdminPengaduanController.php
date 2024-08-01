@@ -8,8 +8,34 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminPengaduanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $query = Pengaduan::query();
+
+        // Get filter inputs
+        $day = $request->input('day');
+        $month = $request->input('month');
+        $year = $request->input('year');
+
+        // Apply filters
+        if ($day) {
+            $query->whereDay('date', $day);
+        }
+
+        if ($month) {
+            $query->whereMonth('date', $month);
+        }
+
+        if ($year) {
+            $query->whereYear('date', $year);
+        }
+
+        // Get filtered results
+        $pengaduans = $query->get();
+
+        // Pass filter data to view
+        return view('admin.pengaduan.index', compact('pengaduans', 'day', 'month', 'year'));
+
         $pengaduans = Pengaduan::all();
         return view('admin.pengaduan.index', compact('pengaduans'));
     }
@@ -42,17 +68,12 @@ class AdminPengaduanController extends Controller
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Handle photo upload if a new file is provided
+        // Handle file upload
         if ($request->hasFile('photo')) {
-            // Delete the old photo if exists
-            if ($pengaduan->photo) {
-                Storage::delete('public/' . $pengaduan->photo);
-            }
+            // Store the file in the public/photos directory
             $filePath = $request->file('photo')->store('photos', 'public');
             $validatedData['photo'] = $filePath;
         }
-
-        $pengaduan->update($validatedData);
 
         return redirect()->route('admin.pengaduan.index')->with('success', 'Pengaduan updated successfully!');
     }
