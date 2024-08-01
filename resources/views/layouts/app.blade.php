@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!-- Flowbite -->
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -93,7 +95,7 @@
                     <!-- History Dropdown -->
                     <li class="nav-item list-none relative">
                         <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                            class="text-white bg-blue-700 hover:text-blue-600 focus:outline-none font-medium rounded-lg text-sm px-0 text-center inline-flex items-center dark:bg-transparent"
+                            class="bg-transparent text-gray-700 dark:text-white hover:text-blue-600 focus:outline-none font-medium rounded-lg text-sm px-0 text-center inline-flex items-center dark:bg-transparent"
                             type="button">
                             History
                             <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +131,7 @@
 
                     <li class="nav-item list-none relative">
                         <button id="dropdownDefaultButton2" data-dropdown-toggle="dropdown2"
-                            class="text-white bg-blue-700 hover:text-blue-600 focus:outline-none font-medium rounded-lg text-sm px-0 text-center inline-flex items-center dark:bg-transparent"
+                            class="text-gray-700 dark:text-white bg-transparent hover:text-blue-600 focus:outline-none font-medium rounded-lg text-sm px-0 text-center inline-flex items-center dark:bg-transparent"
                             type="button">
                             {{auth()->user()->name}}
                             <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -180,6 +182,147 @@
     <main class="py-6">
         @yield('content')
     </main>
+
+
+    <footer class="dark:bg-gray-800 dark:border-gray-600">
+        <div class="mx-auto w-full max-w-screen-xl">
+            <div class="ms-20 grid grid-cols-1 gap-8 px-4 py-6 lg:py-8 md:grid-cols-2 lg:grid-cols-4">
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Kontak</h2>
+                    <ul class="text-gray-600 dark:text-gray-300 font-medium">
+                        <li class="mb-4">
+                            <a href="#" class=" hover:underline">Badan Narkotika Nasional</a>
+                        </li>
+                        <li class="mb-4 flex">
+                            <svg class="w-6 h-6 text-gray-600 dark:text-gray-300 mr-2" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <p class="hover:underline text-sm">Jl. Selomangleng No.03 Kel.Pojok Kec.Mojoroto
+                                Kota
+                                Kediri</p>
+                        </li>
+                        <li class="mb-4 flex">
+                            <svg class="w-6 h-6 text-gray-600 dark:text-gray-300 mr-2" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M16 10.5h.01m-4.01 0h.01M8 10.5h.01M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-6.6a1 1 0 0 0-.69.275l-2.866 2.723A.5.5 0 0 1 8 18.635V17a1 1 0 0 0-1-1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" />
+                            </svg>
+
+                            <p class="hover:underline text-sm">Call Center: 184</p>
+                        </li>
+                        <li class="mb-4 flex">
+                            <svg class="w-6 h-6 text-gray-600 dark:text-gray-300 mr-2" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M18.427 14.768 17.2 13.542a1.733 1.733 0 0 0-2.45 0l-.613.613a1.732 1.732 0 0 1-2.45 0l-1.838-1.84a1.735 1.735 0 0 1 0-2.452l.612-.613a1.735 1.735 0 0 0 0-2.452L9.237 5.572a1.6 1.6 0 0 0-2.45 0c-3.223 3.2-1.702 6.896 1.519 10.117 3.22 3.221 6.914 4.745 10.12 1.535a1.601 1.601 0 0 0 0-2.456Z" />
+                            </svg>
+
+                            <p class="hover:underline">+62 (21) 8087-1566 | +62 (21) 8087-1567</p>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Tautan Terkait</h2>
+                    <ul class="text-gray-600 dark:text-gray-300 font-medium">
+                        <li class="mb-4 flex">
+                            <svg class="w-6 h-6 text-gray-600 dark:text-gray-300 mr-2" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M10.915 2.345a2 2 0 0 1 2.17 0l7 4.52A2 2 0 0 1 21 8.544V9.5a1.5 1.5 0 0 1-1.5 1.5H19v6h1a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2h1v-6h-.5A1.5 1.5 0 0 1 3 9.5v-.955a2 2 0 0 1 .915-1.68l7-4.52ZM17 17v-6h-2v6h2Zm-6-6h2v6h-2v-6Zm-2 6v-6H7v6h2Z"
+                                    clip-rule="evenodd" />
+                                <path d="M2 21a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1Z" />
+                            </svg>
+                            <a href="https://bnn.go.id/" class="hover:underline">BNN Pusat</a>
+                        </li>
+                        <li class="mb-4 flex">
+                            <svg class="w-6 h-6 text-gray-600 dark:text-gray-300 mr-2" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M8 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1h2a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2Zm6 1h-4v2H9a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2h-1V4Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <a href="https://ppid.bnn.go.id/" class="hover:underline">Layanan Informasi Publik (PPID)</a>
+                        </li>
+                        <li class="mb-4 flex">
+                            <i class="fa fa-balance-scale w-6 h-6 text-gray-600 dark:text-gray-300 mr-2" aria-hidden="true"></i>
+                            <a href="https://jdih.bnn.go.id/" class="hover:underline">Layanan Informasi Hukum (JDIH)</a>
+                        </li>
+                        <li class="mb-4 flex">
+                            <i class="fa-solid fa-stethoscope w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
+                            <a href="https://rehabilitasi.bnn.go.id/public/" class="hover:underline">Layanan Rehabilitasi</a>
+                        </li>
+                        <li class="mb-4 flex">
+                            <i class="fa-solid fa-book w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
+                            <a href="https://perpustakaan.bnn.go.id/" class="hover:underline">Perpustakaan Digital</a>
+                        </li>
+                        <li class="mb-4 flex">
+                            <i class="fa-solid fa-up-right-from-square w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
+                            <a href="https://kedirikota.bnn.go.id/gpr-kominfo/" class="hover:underline">Government Public Relations</a>
+                        </li>
+                        <li class="mb-4 flex">
+                            <i class="fa-solid fa-cart-shopping w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
+                            <a href="https://tokostopnarkoba.bnn.go.id/" class="hover:underline">Toko Stop Narkoba</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Unit Kerja</h2>
+                    <ul class="text-gray-600 dark:text-gray-300 font-medium">
+                        <li class="mb-4 flex">
+                            <svg class="w-6 h-6 text-gray-600 dark:text-gray-300 mr-2" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M10.915 2.345a2 2 0 0 1 2.17 0l7 4.52A2 2 0 0 1 21 8.544V9.5a1.5 1.5 0 0 1-1.5 1.5H19v6h1a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2h1v-6h-.5A1.5 1.5 0 0 1 3 9.5v-.955a2 2 0 0 1 .915-1.68l7-4.52ZM17 17v-6h-2v6h2Zm-6-6h2v6h-2v-6Zm-2 6v-6H7v6h2Z"
+                                    clip-rule="evenodd" />
+                                <path d="M2 21a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1Z" />
+                            </svg>
+                            <a href="https://kedirikota.bnn.go.id/berita/" class="hover:underline">Bidang Umum</a>
+                        </li>
+                        <li class="mb-4 flex">
+                            <i class="fa-solid fa-triangle-exclamation w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
+                            <a href="https://kedirikota.bnn.go.id/pencegahan/" class="hover:underline">Bidang Pencegahan dan Pemberdayaan Masyarakat</a>
+                        </li>
+                        <li class="mb-4 flex">
+                            <i class="fa-solid fa-suitcase-medical w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
+                            <a href="https://kedirikota.bnn.go.id/rehabilitasi/" class="hover:underline">Bidang Rehabilitasi</a>
+                        </li>
+                        <li class="mb-4 flex">
+                            <i class="fa-solid fa-eye w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
+                            <a href="https://kedirikota.bnn.go.id/pemberantasan/" class="hover:underline">Bidang Pemberantasan</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Publikasi & Pers</h2>
+                    <ul class="text-gray-600 dark:text-gray-300 font-medium">
+                        <li class="mb-4 flex">
+                            <i class="fa-solid fa-newspaper w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
+                            <a href="https://kedirikota.bnn.go.id/siaran-pers/" class="hover:underline">Siaran Pers</a>
+                        </li>
+                        <li class="mb-4 flex">
+                            <i class="fa-solid fa-clipboard w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
+                            <a href="https://kedirikota.bnn.go.id/berita-kegiatan/" class="hover:underline">Berita Kegiatan</a>
+                        </li>
+                        <li class="mb-4 flex">
+                            <i class="fa-solid fa-newspaper w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
+                            <a href="https://kedirikota.bnn.go.id/artikel/" class="hover:underline">Artikel</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <footer
         class="w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
