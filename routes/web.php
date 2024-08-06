@@ -43,6 +43,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
 
+
     Route::get('/admin/pengaduan', [AdminController::class, 'pengaduan'])->name('admin.pengaduan.index');
     Route::get('/admin/laporan_narasumber', [AdminController::class,'laporan_narasumber'])->name('admin.laporan_narasumber');
 });
@@ -78,5 +79,6 @@ Route::get('/permohonan', [AdminController::class,'laporan_narasumber'])->name('
 Route::patch('permohonan-narasumber/{id}/updateStatus',[AdminController::class,'updateStatus'])->name('admin.laporan_narasumber.updateStatus');
 //admin
 Route::get('/admin-dashboard', [AdminController::class, 'index'])->name('admin_dashboard');
+Route::get('/admin-dashboard', [AdminController::class, 'dashboard'])->name('admin_dashboard');
 
 require __DIR__.'/auth.php';

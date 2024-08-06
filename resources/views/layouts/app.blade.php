@@ -55,8 +55,7 @@
         <div class="max-w-screen-xl mx-auto p-4 flex flex-wrap items-center justify-between">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('images/thumbnail/logo_bnn.png') }}" class="h-10" alt="BNN Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BNN Kota
-                    Kediri</span>
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Kediri Bersinar</span>
             </a>
             <button type="button"
                 class="inline-flex items-center p-2 text-gray-500 rounded-lg md:hidden hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-600"

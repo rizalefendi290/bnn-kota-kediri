@@ -17,9 +17,13 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!-- Flowbite -->
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
-
+    <link href="https://unpkg.com/flowbite@latest/dist/flowbite.css" rel="stylesheet">
+    <script src="https://unpkg.com/flowbite@latest/dist/flowbite.js"></script>
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    
 </head>
 
 <body id="app" class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
@@ -40,9 +44,8 @@
                     </button>
                     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src="{{ asset('images/thumbnail/logo_bnn.png') }}" class="h-10" alt="BNN Logo" />
-                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Admin BNN
-                            Kota
-                            Kediri</span>
+                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Admin
+                            Kediri Bersinar</span>
                     </a>
                 </div>
             </div>
@@ -67,6 +70,7 @@
 
     <!-- Flowbite -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+
 </body>
 
 </html>

@@ -40,7 +40,7 @@ class AdminController extends Controller
         return view('admin.laporan_narasumber', compact('laporan_narasumbers'));
 
     }
-        public function updateStatus(Request $request, $id)
+    public function updateStatus(Request $request, $id)
     {
         $laporan_narasumber = PermohonanNarasumber::find($id);
         $laporan_narasumber->status = $request->status;
@@ -49,4 +49,16 @@ class AdminController extends Controller
         return redirect()->route('admin.laporan_narasumber')->with('success', 'Status laporan berhasil diperbarui.');
     }
 
+    public function dashboard()
+    {
+        $totalPengaduan = Pengaduan::count();
+        $totalPermohonan = PermohonanNarasumber::count();
+    
+        // Debugging
+
+        return view('admin.dashboard', [
+            'totalPengaduan' => $totalPengaduan,
+            'totalPermohonan' => $totalPermohonan,
+        ]);
+    }
 }
