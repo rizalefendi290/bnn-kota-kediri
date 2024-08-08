@@ -30,6 +30,11 @@
                     class="inline-flex justify-center items-center mt-5 py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-900">
                     Reset Filter
                 </a>
+                <a href="{{ route('admin.laporan_narasumber.cetak') }}"
+                    class="inline-flex justify-center items-center mt-5 py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900">
+                    Cetak PDF
+                </a>
+
             </div>
         </div>
     </form>

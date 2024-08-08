@@ -47,6 +47,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin-dashboard', [AdminController::class, 'dashboard'])->name('admin_dashboard');
     Route::get('/admin/pengaduan', [AdminController::class, 'pengaduan'])->name('admin.pengaduan.index');
     Route::get('/admin/laporan_narasumber', [AdminController::class,'laporan_narasumber'])->name('admin.laporan_narasumber');
+    Route::get('admin/laporan_narasumber/cetak', [AdminController::class,'cetakLaporanNarasumber'])->name('admin.laporan_narasumber.cetak');
 });
 
 Route::middleware('auth')->group(function () {

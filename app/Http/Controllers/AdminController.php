@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pengaduan;
 use App\Models\PengaduanMasyarakat;
 use App\Models\PermohonanNarasumber;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -47,6 +48,12 @@ class AdminController extends Controller
         return view('admin.laporan_narasumber', compact('laporan_narasumbers'));
 
     }
+    public function cetakLaporanNarasumber(Request $request){
+        $cetakLaporanNarasumbers = PermohonanNarasumber::all();
+        $pdf = Pdf::loadview('admin.laporan_narasumber_pdf', compact('cetakLaporanNarasumbers'))->setPaper('a4','landscape');
+
+        return $pdf->download('laporan_narasumber.pdf');
+    }
     public function updateStatus(Request $request, $id)
     {
         $laporan_narasumber = PermohonanNarasumber::find($id);
@@ -67,4 +74,5 @@ class AdminController extends Controller
             'totalPermohonan' => $totalPermohonan,
         ]);
     }
+
 }
