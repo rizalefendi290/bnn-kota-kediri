@@ -9,8 +9,15 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function index(){
-        return view("admin.dashboard");
+    public function index(){        
+        $totalPengaduan = Pengaduan::count();
+        $totalPermohonan = PermohonanNarasumber::count();
+        // Debugging
+
+        return view("admin.dashboard", [
+            'totalPengaduan' => $totalPengaduan,
+            'totalPermohonan' => $totalPermohonan,
+        ]);
     }
 
 
@@ -54,9 +61,8 @@ class AdminController extends Controller
         $totalPengaduan = Pengaduan::count();
         $totalPermohonan = PermohonanNarasumber::count();
     
-        // Debugging
 
-        return view('admin.dashboard', [
+        return view("admin.dashboard", [
             'totalPengaduan' => $totalPengaduan,
             'totalPermohonan' => $totalPermohonan,
         ]);

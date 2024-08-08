@@ -37,18 +37,15 @@
         <table class="min-w-full bg-white dark:bg-gray-800 mx-auto">
             <thead>
                 <tr>
-                    <th class="py-2 px-4 border-b-2">No</th>
-                    <th class="py-2 px-4 border-b-2">Nama</th>
-                    <th class="py-2 px-4 border-b-2">No HP</th>
-                    <th class="py-2 px-4 border-b-2">Tempat Kegiatan</th>
-                    <th class="py-2 px-4 border-b-2">Jam Mulai</th>
-                    <th class="py-2 px-4 border-b-2">Jam Selesai</th>
-                    <th class="py-2 px-4 border-b-2">Tanggal</th>
-                    <th class="py-2 px-4 border-b-2">Jumlah Peserta</th>
-                    <th class="py-2 px-4 border-b-2">Surat Permohonan</th>
-                    <th class="py-2 px-4 border-b-2">Keterangan</th>
-                    <th class="py-2 px-4 border-b-2">Status</th>
-                    <th class="py-2 px-4 border-b-2">Aksi</th>
+                    <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 text-left border-b-2">No</th>
+                    <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 text-left border-b-2">Nama</th>
+                    <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 text-left border-b-2">No HP</th>
+                    <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 text-left border-b-2">Tempat Kegiatan</th>
+                    <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 text-left border-b-2">Jam Mulai</th>
+                    <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 text-left border-b-2">Tanggal</th>
+                    <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 text-left border-b-2">Surat Permohonan</th>
+                    <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 text-left border-b-2">Status</th>
+                    <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 text-left border-b-2">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -59,15 +56,11 @@
                     <td class="py-2 px-4 border-b">{{ $laporan_narasumber->phone }}</td>
                     <td class="py-2 px-4 border-b">{{ $laporan_narasumber->event_place }}</td>
                     <td class="py-2 px-4 border-b">{{ $laporan_narasumber->event_start_time }}</td>
-                    <td class="py-2 px-4 border-b">{{ $laporan_narasumber->event_end_time }}</td>
                     <td class="py-2 px-4 border-b">{{ $laporan_narasumber->event_date }}</td>
-                    <td class="py-2 px-4 border-b">{{ $laporan_narasumber->participants }}</td>
                     <td class="py-2 px-4 border-b">
                         <a href="{{ Storage::url($laporan_narasumber->request_letter) }}" target="_blank"
                             class="text-blue-500 hover:underline">Lihat Berkas</a>
                     </td>
-                    <td class="py-2 px-4 border-b whitespace-nowrap overflow-hidden text-ellipsis max-w-xs">
-                        {{ $laporan_narasumber->remarks }}</td>
                     <td class="py-2 mt-4 px-4 border-b flex items-center">
                         <form action="{{ route('admin.laporan_narasumber.updateStatus', $laporan_narasumber->id) }}"
                             method="POST" class="w-full">

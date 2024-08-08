@@ -1,5 +1,8 @@
 <x-guest-layout>
     <!-- Session Status -->
+     <div class="flex justify-center items-center">
+         <img src="{{asset('images/thumbnail/logo_bnn.png')}}" alt="" width="150">
+     </div>
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">

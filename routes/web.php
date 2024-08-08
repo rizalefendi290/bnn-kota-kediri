@@ -44,6 +44,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     })->name('admin.dashboard');
 
 
+    Route::get('/admin-dashboard', [AdminController::class, 'dashboard'])->name('admin_dashboard');
     Route::get('/admin/pengaduan', [AdminController::class, 'pengaduan'])->name('admin.pengaduan.index');
     Route::get('/admin/laporan_narasumber', [AdminController::class,'laporan_narasumber'])->name('admin.laporan_narasumber');
 });
