@@ -37,9 +37,11 @@ class AdminController extends Controller
 
         //filter tanggal
         if ($request->filled('month')) {
-            $date = \Carbon\Carbon::parse($request->input('month'));
-            $query->whereYear('event_date', $date->year)
-                  ->whereMonth('event_date', $date->month);
+            $month = $request->month;
+            $query->whereMonth('event_date', $month);
+        }
+        if ($request->filled('year')) {
+            $query->whereYear('event_date', $request->year);
         }
 
         //pagination
@@ -48,12 +50,37 @@ class AdminController extends Controller
         return view('admin.laporan_narasumber', compact('laporan_narasumbers'));
 
     }
-    public function cetakLaporanNarasumber(Request $request){
-        $cetakLaporanNarasumbers = PermohonanNarasumber::all();
-        $pdf = Pdf::loadview('admin.laporan_narasumber_pdf', compact('cetakLaporanNarasumbers'))->setPaper('a4','landscape');
-
+    public function cetakLaporanNarasumber(Request $request)
+    {
+        // Ambil data berdasarkan filter yang diterapkan
+        $query = PermohonanNarasumber::query();
+    
+        if ($request->filled('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+    
+        if ($request->filled('month')) {
+            // Filter berdasarkan bulan jika bulan diisi
+            $query->whereMonth('event_date', '=', $request->month);
+        }
+    
+        if ($request->filled('year')) {
+            // Filter berdasarkan tahun jika tahun diisi
+            $query->whereYear('event_date', '=', $request->year);
+        }
+    
+        // Dapatkan hasil query setelah semua filter diterapkan
+        $cetakLaporanNarasumbers = $query->get();
+    
+        // Generate PDF
+        $pdf = PDF::loadView('admin.laporan_narasumber_pdf', compact('cetakLaporanNarasumbers'))
+                    ->setPaper('a4', 'landscape');
+    
+        // Download PDF
         return $pdf->download('laporan_narasumber.pdf');
     }
+    
+    
     public function updateStatus(Request $request, $id)
     {
         $laporan_narasumber = PermohonanNarasumber::find($id);
