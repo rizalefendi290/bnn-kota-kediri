@@ -10,7 +10,7 @@ class UserController extends Controller
     public function history_permohonan_narasumber(){
         $user = auth()->user();
 
-        $requests = PermohonanNarasumber::where("id", $user->id)->paginate(10);
+        $requests = PermohonanNarasumber::where("user_id", $user->id)->paginate(10);
         return view("permohonan.history_permohonan_narasumber", compact("requests"));
     }
 }

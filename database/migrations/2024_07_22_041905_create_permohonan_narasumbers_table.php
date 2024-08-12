@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('permohonan_narasumbers', function (Blueprint $table) {
             $table->id();
+            $table ->foreignId('user_id')->constrained('users')->OnDelete('cascade');
             $table->string('name');
             $table->string('phone');
             $table->string('event_place');

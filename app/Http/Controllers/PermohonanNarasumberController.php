@@ -34,6 +34,7 @@ class PermohonanNarasumberController extends Controller
             'participants' => $request->participants,
             'request_letter' => $requestLetterPath,
             'remarks' => $request->remarks,
+            'user_id' => auth()->id(), // Menambahkan user_id saat membuat record
         ]);
         return redirect()->route('permohonan.show', $permohonan->id)->with('success', 'Permohonan berhasil dikirim!');
     }
