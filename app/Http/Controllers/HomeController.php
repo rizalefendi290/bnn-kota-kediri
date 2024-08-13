@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     public function index(){
         if(auth()->user()->role == 'admin'){
-            return view('admin.dashboard');
+            return view('welcome');
         } else{
             return view('welcome');
         }

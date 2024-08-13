@@ -46,7 +46,7 @@
         </table>
     </div>
 
-    <div class="mt-5">
+    <div class="mx-10 py-5">
         {{ $requests->links() }}
     </div>
 </div>

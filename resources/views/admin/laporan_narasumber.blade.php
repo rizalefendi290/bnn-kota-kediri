@@ -82,7 +82,7 @@
                         <a href="{{ Storage::url($laporan_narasumber->request_letter) }}" target="_blank"
                             class="text-blue-500 hover:underline">Lihat Berkas</a>
                     </td>
-                    <td class="py-2 mt-4 px-4 border-b flex items-center">
+                    <td class="py-2 mt-10 px-4 border-b flex items-center justify-center">
                         <form action="{{ route('admin.laporan_narasumber.updateStatus', $laporan_narasumber->id) }}"
                             method="POST" class="w-full">
                             @csrf
@@ -100,36 +100,63 @@
                         @if ($laporan_narasumber->status == 'processed')
                         <svg class="w-10 h-10 text-green-500 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
-                            </path>
-                        </svg>
-                        @else
-                        <svg class="w-10 h-10 text-red-500 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12"></path>
+                                d="M9 12l2 2l4-4m6 2a9 9 0 11-18 0a9 9 0 0118 0z"></path>
                         </svg>
                         @endif
                     </td>
-
-
                     <td class="py-2 px-4 border-b">
-                        <a href="{{route('permohonan.show', $laporan_narasumber->id)}}"
-                            class="text-green-500 hover:underline">View</a>
-                        <form action="{{ route('permohonan.destroy', $laporan_narasumber->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:underline">Delete</button>
-                        </form>
+                        <div class="flex justify-start items-center gap-4">
+                            <a href="{{ route('permohonan.show', $laporan_narasumber->id) }}"
+                                class="text-green-500 hover:underline">
+                                Lihat Detail
+                            </a>
+                            <form action="{{ route('permohonan.destroy', $laporan_narasumber->id) }}" method="POST"
+                                class="inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="delete-btn text-red-500 hover:underline">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-
-    <div class="mt-5">
-        {{$laporan_narasumbers->links()}}
+    <div class="mt-4 flex justify-center">
+        {{ $laporan_narasumbers->appends(request()->except('page'))->links() }}
     </div>
 </div>
+
+<!-- SweetAlert Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Alert for status update
+
+    // Confirmation before delete
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Data yang dihapus tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    button.closest('form').submit();
+                }
+            });
+        });
+    });
+});
+</script>
 @endsection

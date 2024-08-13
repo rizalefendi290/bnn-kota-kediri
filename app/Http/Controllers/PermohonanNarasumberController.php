@@ -35,8 +35,12 @@ class PermohonanNarasumberController extends Controller
             'request_letter' => $requestLetterPath,
             'remarks' => $request->remarks,
             'user_id' => auth()->id(), // Menambahkan user_id saat membuat record
+        ]);    
+        return response()->json([
+            'success' => true,
+            'message' => 'Permohonan berhasil dikirim!',
+            'redirect' => route('permohonan.show', $permohonan->id),
         ]);
-        return redirect()->route('permohonan.show', $permohonan->id)->with('success', 'Permohonan berhasil dikirim!');
     }
     public function index(){
         return view('permohonan.permohonan_narasumber');
