@@ -51,14 +51,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
 
-
-//route pengaduan
 //history
 Route::get('/history/permohonan_narasumber', [UserController::class,'history_permohonan_narasumber'])->name('history_permohonan_narasumber');
+Route::get('/history/pengaduan', [UserController::class, 'history_pengaduan'])->name('history_pengaduan');
 
+//route pengaduan
 Route::get('/pengaduan', [PengaduanController::class, 'index'])->name('pengaduan.index');
 Route::get('/pengaduan', [PengaduanController::class, 'create'])->name('pengaduan.create');
 Route::post('/pengaduan/create', [PengaduanController::class, 'store'])->name('pengaduan.form');

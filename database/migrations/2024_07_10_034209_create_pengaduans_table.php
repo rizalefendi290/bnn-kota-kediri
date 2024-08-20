@@ -19,6 +19,8 @@ return new class extends Migration
             $table->date('date');
             $table->string('photo');
             $table->text('laporan');
+            $table->enum('status', ['belum_diproses', 'proses', 'sudah_diproses'])->default('belum_diproses');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Foreign key to users table
             $table->timestamps();
         });
     }

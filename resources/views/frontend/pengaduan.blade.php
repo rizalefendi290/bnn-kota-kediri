@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section ('content')
     <div class="page-wrapper">
         <main class="page-wrapper">
             <section

@@ -35,7 +35,7 @@ class PermohonanNarasumberController extends Controller
             'request_letter' => $requestLetterPath,
             'remarks' => $request->remarks,
             'user_id' => auth()->id(), // Menambahkan user_id saat membuat record
-        ]);    
+        ]);
         return response()->json([
             'success' => true,
             'message' => 'Permohonan berhasil dikirim!',
@@ -62,6 +62,4 @@ class PermohonanNarasumberController extends Controller
 
         return redirect()->route('admin.laporan_narasumber')->with('success', 'Data Berhasil di hapus');
     }
-
-    
 }

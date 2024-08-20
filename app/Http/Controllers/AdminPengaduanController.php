@@ -10,41 +10,48 @@ class AdminPengaduanController extends Controller
 {
     public function index(Request $request)
     {
+        // Filtering based on status
         $query = Pengaduan::query();
 
-        // Get filter inputs
-        $day = $request->input('day');
-        $month = $request->input('month');
-        $year = $request->input('year');
-
-        // Apply filters
-        if ($day) {
-            $query->whereDay('date', $day);
+        if ($request->has('status') && $request->status != '') {
+            $query->where('status', $request->status);
         }
 
-        if ($month) {
-            $query->whereMonth('date', $month);
+        if ($request->has('day') && $request->day != '') {
+            $query->whereDay('date', $request->day);
         }
 
-        if ($year) {
-            $query->whereYear('date', $year);
+        if ($request->has('month') && $request->month != '') {
+            $query->whereMonth('date', $request->month);
         }
 
-        // Get filtered results
-        $pengaduans = $query->get();
+        if ($request->has('year') && $request->year != '') {
+            $query->whereYear('date', $request->year);
+        }
 
-        // Pass filter data to view
-        return view('admin.pengaduan.index', compact('pengaduans', 'day', 'month', 'year'));
+        // Multi-user support: show only complaints of the logged-in user
+        if (auth()->user()->role != 'admin') {
+            $query->where('user_id', auth()->id());
+        }
 
-        $pengaduans = Pengaduan::all();
+        $pengaduans = $query->paginate(10);
+
         return view('admin.pengaduan.index', compact('pengaduans'));
     }
 
-    // Display the specified pengaduan
     public function show($id)
     {
         $pengaduan = Pengaduan::findOrFail($id);
         return view('admin.pengaduan.show', compact('pengaduan'));
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $pengaduan = Pengaduan::findOrFail($id);
+        $pengaduan->status = $request->status;
+        $pengaduan->save();
+
+        return redirect()->route('admin.pengaduan.index')->with('success', 'Status updated successfully.');
     }
 
     // Show the form for editing the specified pengaduan
@@ -66,6 +73,7 @@ class AdminPengaduanController extends Controller
             'date' => 'required|date',
             'laporan' => 'required|string|max:1000',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'user_id' => ''
         ]);
 
         // Handle file upload
