@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('Kediri Bersinar', 'Kediri Bersinar') }}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('images/thumbnail/logo_bnn.png') }}" type="image/x-icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -56,7 +59,8 @@
         <div class="max-w-screen-xl mx-auto p-4 flex flex-wrap items-center justify-between">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('images/thumbnail/logo_bnn.png') }}" class="h-10" alt="BNN Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Kediri Bersinar</span>
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Kediri
+                    Bersinar</span>
             </a>
             <button type="button"
                 class="inline-flex items-center p-2 text-gray-500 rounded-lg md:hidden hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-600"
@@ -78,14 +82,166 @@
                     @guest
                     @if (Route::has('login'))
                     <li class="nav-item list-none">
-                        <a class="nav-link text-gray-700 dark:text-white hover:text-blue-500"
-                            href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <!-- Modal toggle -->
+                        <a href="#" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
+                            class="nav-link text-gray-700 dark:text-white hover:text-blue-500">
+                            Login
+                        </a>
+
+                        <!-- Main modal -->
+                        <div id="authentication-modal" tabindex="-1" aria-hidden="true"
+                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative p-4 w-full max-w-md max-h-full">
+                                <!-- Modal content -->
+                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                    <!-- Modal header -->
+                                    <div
+                                        class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                            Login
+                                        </h3>
+                                        <button type="button"
+                                            class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                            data-modal-hide="authentication-modal">
+                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 14 14">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2"
+                                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                            </svg>
+                                            <span class="sr-only">Close modal</span>
+                                        </button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="p-4 md:p-5">
+                                        <form class="space-y-4" action="{{ route('login') }}" method="POST">
+                                            @csrf
+                                            <!-- Menyertakan CSRF token -->
+                                            <div>
+                                                <label for="email"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                    Email</label>
+                                                <input type="email" name="email" id="email"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                    placeholder="email@gmail.com" required />
+                                            </div>
+                                            <div>
+                                                <label for="password"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                    Password</label>
+                                                <input type="password" name="password" id="password"
+                                                    placeholder="••••••••"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                    required />
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <div class="flex items-start">
+                                                    <div class="flex items-center h-5">
+                                                        <input id="remember" name="remember" type="checkbox"
+                                                            value="true"
+                                                            class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" />
+                                                    </div>
+                                                    <label for="remember"
+                                                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ingat
+                                                        Kata Sandi</label>
+                                                </div>
+                                                <a href="{{ route('password.request') }}"
+                                                    class="text-sm text-blue-700 hover:underline dark:text-blue-500">Lupa
+                                                    Password?</a>
+                                            </div>
+                                            <button type="submit"
+                                                class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
+                                            <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+                                                Tidak mempunyai akun? <a href="{{ route('register') }}"
+                                                    class="text-blue-700 hover:underline dark:text-blue-500">Buat
+                                                    Akun</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
-                    @endif
-                    @if (Route::has('register'))
                     <li class="nav-item list-none">
-                        <a class="nav-link text-gray-700 dark:text-white hover:text-blue-500"
-                            href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <!-- Modal toggle -->
+                        <a href="#" data-modal-target="register-modal" data-modal-toggle="register-modal"
+                            class="nav-link text-gray-700 dark:text-white hover:text-blue-500">
+                            Daftar Akun
+                        </a>
+
+                        <!-- Register Modal -->
+                        <div id="register-modal" tabindex="-1" aria-hidden="true"
+                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative p-4 w-full max-w-md max-h-full">
+                                <!-- Modal content -->
+                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                    <!-- Modal header -->
+                                    <div
+                                        class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                            Daftar Akun
+                                        </h3>
+                                        <button type="button"
+                                            class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                            data-modal-hide="register-modal">
+                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 14 14">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2"
+                                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                            </svg>
+                                            <span class="sr-only">Close modal</span>
+                                        </button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="p-4 md:p-5">
+                                        <form class="space-y-4" action="{{ route('register') }}" method="POST">
+                                            @csrf
+                                            <div>
+                                                <label for="name"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                    Nama Lengkap</label>
+                                                <input type="text" name="name" id="name"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                    placeholder="Nama Lengkap" required />
+                                            </div>
+                                            <div>
+                                                <label for="email"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                    Email</label>
+                                                <input type="email" name="email" id="email"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                    placeholder="email@gmail.com" required />
+                                            </div>
+                                            <div>
+                                                <label for="password"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                    Password</label>
+                                                <input type="password" name="password" id="password"
+                                                    placeholder="••••••••"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                    required />
+                                            </div>
+                                            <div>
+                                                <label for="password_confirmation"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                    Konfirmasi Password</label>
+                                                <input type="password" name="password_confirmation"
+                                                    id="password_confirmation" placeholder="••••••••"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                    required />
+                                            </div>
+                                            <button type="submit"
+                                                class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Daftar</button>
+                                            <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+                                                Sudah punya akun? <a href="{{ route('login') }}"
+                                                    class="text-blue-700 hover:underline dark:text-blue-500">Login</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                     @endif
                     @else
@@ -251,23 +407,28 @@
                                     d="M8 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1h2a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2Zm6 1h-4v2H9a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2h-1V4Z"
                                     clip-rule="evenodd" />
                             </svg>
-                            <a href="https://ppid.bnn.go.id/" class="hover:underline">Layanan Informasi Publik (PPID)</a>
+                            <a href="https://ppid.bnn.go.id/" class="hover:underline">Layanan Informasi Publik
+                                (PPID)</a>
                         </li>
                         <li class="mb-4 flex">
-                            <i class="fa fa-balance-scale w-6 h-6 text-gray-600 dark:text-gray-300 mr-2" aria-hidden="true"></i>
+                            <i class="fa fa-balance-scale w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"
+                                aria-hidden="true"></i>
                             <a href="https://jdih.bnn.go.id/" class="hover:underline">Layanan Informasi Hukum (JDIH)</a>
                         </li>
                         <li class="mb-4 flex">
                             <i class="fa-solid fa-stethoscope w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
-                            <a href="https://rehabilitasi.bnn.go.id/public/" class="hover:underline">Layanan Rehabilitasi</a>
+                            <a href="https://rehabilitasi.bnn.go.id/public/" class="hover:underline">Layanan
+                                Rehabilitasi</a>
                         </li>
                         <li class="mb-4 flex">
                             <i class="fa-solid fa-book w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
                             <a href="https://perpustakaan.bnn.go.id/" class="hover:underline">Perpustakaan Digital</a>
                         </li>
                         <li class="mb-4 flex">
-                            <i class="fa-solid fa-up-right-from-square w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
-                            <a href="https://kedirikota.bnn.go.id/gpr-kominfo/" class="hover:underline">Government Public Relations</a>
+                            <i
+                                class="fa-solid fa-up-right-from-square w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
+                            <a href="https://kedirikota.bnn.go.id/gpr-kominfo/" class="hover:underline">Government
+                                Public Relations</a>
                         </li>
                         <li class="mb-4 flex">
                             <i class="fa-solid fa-cart-shopping w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
@@ -290,16 +451,20 @@
                             <a href="https://kedirikota.bnn.go.id/berita/" class="hover:underline">Bidang Umum</a>
                         </li>
                         <li class="mb-4 flex">
-                            <i class="fa-solid fa-triangle-exclamation w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
-                            <a href="https://kedirikota.bnn.go.id/pencegahan/" class="hover:underline">Bidang Pencegahan dan Pemberdayaan Masyarakat</a>
+                            <i
+                                class="fa-solid fa-triangle-exclamation w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
+                            <a href="https://kedirikota.bnn.go.id/pencegahan/" class="hover:underline">Bidang Pencegahan
+                                dan Pemberdayaan Masyarakat</a>
                         </li>
                         <li class="mb-4 flex">
                             <i class="fa-solid fa-suitcase-medical w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
-                            <a href="https://kedirikota.bnn.go.id/rehabilitasi/" class="hover:underline">Bidang Rehabilitasi</a>
+                            <a href="https://kedirikota.bnn.go.id/rehabilitasi/" class="hover:underline">Bidang
+                                Rehabilitasi</a>
                         </li>
                         <li class="mb-4 flex">
                             <i class="fa-solid fa-eye w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
-                            <a href="https://kedirikota.bnn.go.id/pemberantasan/" class="hover:underline">Bidang Pemberantasan</a>
+                            <a href="https://kedirikota.bnn.go.id/pemberantasan/" class="hover:underline">Bidang
+                                Pemberantasan</a>
                         </li>
                     </ul>
                 </div>
@@ -312,7 +477,8 @@
                         </li>
                         <li class="mb-4 flex">
                             <i class="fa-solid fa-clipboard w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
-                            <a href="https://kedirikota.bnn.go.id/berita-kegiatan/" class="hover:underline">Berita Kegiatan</a>
+                            <a href="https://kedirikota.bnn.go.id/berita-kegiatan/" class="hover:underline">Berita
+                                Kegiatan</a>
                         </li>
                         <li class="mb-4 flex">
                             <i class="fa-solid fa-newspaper w-6 h-6 text-gray-600 dark:text-gray-300 mr-2"></i>
@@ -353,7 +519,7 @@
     });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
+    <script>
     document.getElementById('requestForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -362,43 +528,44 @@
 
         // Send AJAX request
         fetch(this.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                        'content')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        title: 'Berhasil!',
+                        text: data.message,
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        // Optionally, redirect or clear the form
+                        window.location.href = '/';
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Gagal!',
+                        text: data.message,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            })
+            .catch(error => {
                 Swal.fire({
-                    title: 'Berhasil!',
-                    text: data.message,
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    // Optionally, redirect or clear the form
-                    window.location.href = '/';
-                });
-            } else {
-                Swal.fire({
-                    title: 'Gagal!',
-                    text: data.message,
+                    title: 'Terjadi Kesalahan!',
+                    text: 'Gagal mengirim permohonan. Silakan coba lagi nanti.',
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });
-            }
-        })
-        .catch(error => {
-            Swal.fire({
-                title: 'Terjadi Kesalahan!',
-                text: 'Gagal mengirim permohonan. Silakan coba lagi nanti.',
-                icon: 'error',
-                confirmButtonText: 'OK'
             });
-        });
     });
-</script>
+    </script>
 </body>
 
 </html>
