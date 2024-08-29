@@ -97,7 +97,7 @@
                                 <img src="{{ Storage::url($pengaduan->photo) }}" width="100">
                             </td>
                             <td class="py-2 px-4">
-                                <form action="{{ route('admin.pengaduan.updateStatus', $pengaduan->id) }}" method="POST">
+                                <form action="{{ route('pengaduan.updateStatus', $pengaduan->id) }}" method="POST">
                                     @csrf
                                     @method('PATCH')
                                     <select name="status" onchange="this.form.submit()"

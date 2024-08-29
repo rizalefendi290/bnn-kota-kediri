@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 
 class PengaduanController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('pengaduan.index');
     }
 
-    public function create(){
+    public function create()
+    {
         return view('pengaduan.create');
     }
 
@@ -33,10 +35,31 @@ class PengaduanController extends Controller
             $validatedData['photo'] = $filePath;
         }
 
+        // Add the authenticated user's ID to the validated data
+        $validatedData['user_id'] = auth()->id();
+
         // Create a new Pengaduan record
         Pengaduan::create($validatedData);
 
         // Redirect back with a success message
         return redirect()->route('pengaduan.create')->with('success', 'Pengaduan submitted successfully!');
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        // Validate the incoming status
+        $request->validate([
+            'status' => 'required|in:belum_diproses,proses,sudah_diproses',
+        ]);
+
+        // Find the complaint by ID
+        $pengaduan = Pengaduan::findOrFail($id);
+
+        // Update the status
+        $pengaduan->status = $request->input('status');
+        $pengaduan->save();
+
+        // Redirect back with a success message
+        return redirect()->route('admin.pengaduan.index')->with('success', 'Status updated successfully.');
     }
 }

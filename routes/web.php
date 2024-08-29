@@ -62,6 +62,7 @@ Route::get('/history/pengaduan', [UserController::class, 'history_pengaduan'])->
 Route::get('/pengaduan', [PengaduanController::class, 'index'])->name('pengaduan.index');
 Route::get('/pengaduan', [PengaduanController::class, 'create'])->name('pengaduan.create');
 Route::post('/pengaduan/create', [PengaduanController::class, 'store'])->name('pengaduan.form');
+Route::patch('/pengaduan/{id}/update-status', [PengaduanController::class, 'updateStatus'])->name('pengaduan.updateStatus');
 
 //route admin pengaduan
 Route::get('/admin/pengaduan', [AdminPengaduanController::class, 'index'])->name('admin.pengaduan.index');

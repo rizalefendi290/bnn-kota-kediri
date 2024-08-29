@@ -48,7 +48,7 @@
                         <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 text-left">Nomor</th>
                         <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 text-left">Tanggal</th>
                         <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 text-left">Status</th>
-                        <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 text-left">Action</th>
+                        {{-- <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 text-left">Action</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -70,10 +70,10 @@
                                     <span class="text-green-600">Sudah Diproses</span>
                                 @endif
                             </td>
-                            <td class="py-2 px-4">
-                                <a href="{{ route('user.pengaduan.show', $pengaduan->id) }}"
+                            {{-- <td class="py-2 px-4">
+                                <a href="{{ route('admin.pengaduan.show', $pengaduan->id) }}"
                                     class="text-blue-600 hover:underline">View</a>
-                            </td>
+                            </td> --}}
                         </tr>
                     @empty
                         <tr>
