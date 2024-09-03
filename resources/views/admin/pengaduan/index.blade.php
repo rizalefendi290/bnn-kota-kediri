@@ -94,7 +94,8 @@
                             <td class="py-2 px-4">{{ $pengaduan->nomor }}</td>
                             <td class="py-2 px-4">{{ $pengaduan->date }}</td>
                             <td>
-                                <img src="{{ Storage::url($pengaduan->photo) }}" width="100">
+                                <img src="{{ Storage::url($pengaduan->photos) }}" width="100">
+                                {{-- <img src="{{asset('storage/'. $pengaduan->photo)}}" alt="photo" style="max-width: 100px; max-height: 100px;"> --}}
                             </td>
                             <td class="py-2 px-4">
                                 <form action="{{ route('pengaduan.updateStatus', $pengaduan->id) }}" method="POST">
